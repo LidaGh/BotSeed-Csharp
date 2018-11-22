@@ -3,15 +3,12 @@ This bot has been created using [Microsoft Bot Framework](https://dev.botframewo
 
 This samples shows how to:
 Deploy a node Bot as DevOps(CD/CI) to be developed/deployed by a group of developers
-- Use [LUIS](https://luis.ai) to implement core AI capabilities
-- Implement a multi-turn conversation using Dialogs
-- Handle user interruptions for such things as Help or Cancel
-- Prompt for and validate requests for information from the user
+
 
 # Install Your Bot locally
-- Create in Azure Portal a [Basic node Bot, or Web Ap Bot] (https://docs.microsoft.com/en-gb/azure/bot-service/bot-service-quickstart?view=azure-bot-service-4.0)
-- Install [VSCode] (https://code.visualstudio.com/Download) or any other code editor
-- Prepare the Bot to run locally
+- Create in Azure Portal a [Basic node Bot, or Web Ap Bot](https://docs.microsoft.com/en-gb/azure/bot-service/bot-service-quickstart?view=azure-bot-service-4.0)
+- Install [VSCode](https://code.visualstudio.com/Download) or any other code editor
+- [Prepare the Bot to run locally in C#](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-csharp-tutorial-bf-v4)
 
 Your appsettings.json file should look like this
 ```bash
@@ -37,6 +34,53 @@ their bots on localhost or running remotely through a tunnel.
 - Launch the Bot Framework Emulator
 - File -> Open bot and navigate to the bot project folder
 - Select `<your-bot-name>.bot` file
+
+# Setup DevOPs : synchronise your Bot with Git Hub and Azure
+
+Create a repo in Github with the name of your Bot but no documents
+Download & Install GitBash](https://git-scm.com/downloads)
+Get GitBash to access your GitHub account
+Open GitBash on your local Bot Directory
+
+
+```bash
+{
+  echo "# Your_Bot" >> README.md
+  git init
+  git add README.md
+  git commit -m "first commit"
+  git remote add origin https://github.com/your_repo.git
+  git push -u origin master
+  git add .
+  git commit -m "Second commit to add all the files"
+  git push -u origin --all
+  code .
+}
+```
+
+To add, commit and synchronise changes:
+```bash
+{
+//adding changes
+  git add .
+  git commit -m "my commit description"
+  git push //to push changes to git
+}
+```
+You can find the botFilePath and botFileSecret in the Azure App Service application settings.
+## Start the bot
+Before changing any code or settings, verify the bot works. 
+Create an appsettings.json file to hold the bot variables the bot code looks for:
+```bash
+{
+"botFileSecret": "",
+"botFilePath": ""
+
+}
+```
+Set the values of the variables to the values you copied from the Azure bot service's Application Settings in Step 1 of the Download the [web app bot](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-csharp-tutorial-bf-v4#download-the-web-app-bot).
+
+In Visual Studio, start the bot. A browser window opens with the web app bot's web site at http://localhost:3978/.
 
 # Deploy this bot to Azure
 ## Publish from Visual Studio
@@ -68,3 +112,4 @@ msbot clone services -f deploymentScripts/msbotClone -n <BOT-NAME> -l <Azure-loc
 - [Channels and Bot Connector Service](https://docs.microsoft.com/en-us/azure/bot-service/bot-concepts?view=azure-bot-service-4.0)
 - [QnA Maker](https://qnamaker.ai)
 
+## BotSeed - C# Version
