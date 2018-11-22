@@ -1,14 +1,17 @@
-# Basic Bot template
-This bot has been created using [Microsoft Bot Framework](https://dev.botframework.com),
+# Bot Seed template C# Version for DevOps
+This bot has been created using [Microsoft Bot Framework](https://dev.botframework.com), [C#](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/) and [GitHub](https://github.com)
+
+This samples shows how to:
+Deploy a node Bot as DevOps(CD/CI) to be developed/deployed by a group of developers
 - Use [LUIS](https://luis.ai) to implement core AI capabilities
 - Implement a multi-turn conversation using Dialogs
 - Handle user interruptions for such things as Help or Cancel
 - Prompt for and validate requests for information from the user
 
-# Prerequisite to run this bot locally
-- Download the bot code from the Build blade in the Azure Portal
-- Update the `appsettings.json` file in the root of the bot project with the botFilePath and botFileSecret 
-- You can find the botFilePath and botFileSecret in the Azure App Service application settings.
+# Install Your Bot locally
+- Create in Azure Portal a [Basic node Bot, or Web Ap Bot] (https://docs.microsoft.com/en-gb/azure/bot-service/bot-service-quickstart?view=azure-bot-service-4.0)
+- Install [VSCode] (https://code.visualstudio.com/Download) or any other code editor
+- Prepare the Bot to run locally
 
 Your appsettings.json file should look like this
 ```bash
